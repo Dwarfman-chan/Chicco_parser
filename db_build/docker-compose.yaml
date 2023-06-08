@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  chicco:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chicco
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "chicco_db"
+      POSTGRES_USER: "yura"
+      POSTGRES_PASSWORD: "987654321"
+    volumes:
+      - ./tables_construction.sql:/docker-entrypoint-initdb.d/tables_construction.sql
